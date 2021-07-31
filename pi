@@ -1,0 +1,86 @@
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+
+
+class Estoque {
+
+    public int codigo;
+    public String nome;
+    public double qtTotal;
+    public double qtMinima;
+
+    public Estoque(int codigo, String nome, double qtTotal, double qtMinima) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.qtTotal = qtTotal;
+        this.qtMinima = qtMinima;
+
+
+    }
+
+    @Override
+    public String toString() {
+        return codigo + "\n" + nome + "\n" + qtTotal + " " + qtMinima ;
+    }
+}
+
+
+
+
+public class Main
+{
+    public static void main(String[] args) {
+        LinkedList<Estoque> listaest = new LinkedList<>();
+        char continua = 'S';
+        int codigo;
+        String nome;
+        double qtTotal;
+        double qtMinima;
+        double soma = 0;
+        int codigoproduto;
+        int quantvendida;
+        int valor = 1;
+        int somaquan = 0;
+        while (continua == 'S') {
+            codigo = Integer.parseInt(JOptionPane.showInputDialog("Informe o código do Produto"));
+            nome = JOptionPane.showInputDialog("Informe o nome do Produto");
+            qtTotal = Double.parseDouble(JOptionPane.showInputDialog("Informe a quantidade do Produto em estoque"));
+            qtMinima = Double.parseDouble(JOptionPane.showInputDialog("Informe a quantidade mínima do Produto em estoque"));
+            listaest.add(new Estoque(codigo, nome, qtTotal, qtMinima));
+
+            soma=soma+qtTotal;
+            continua = InOut.leChar("Deseja continuar?(S/N)");
+        }
+        for (Estoque elemento : listaest) {
+            System.out.println(elemento + "\n");
+            System.out.println();
+
+        while(valor == 1){
+          codigoproduto = Integer.parseInt(JOptionPane.showInputDialog("Informe o código do Produto"));
+          quantvendida  = Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade vendida"));
+
+        somaquan=somaquan+quantvendida;
+        System.out.println("Deseja continuar?(1/2)");
+        }
+
+          if(soma<somaquan) {
+                System.out.println("Quantidade em estoque não é suficiente – produto não pode ser vendido");
+            }
+
+
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
